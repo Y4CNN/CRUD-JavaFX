@@ -27,7 +27,13 @@ public class Connexion  {
     }
 
     public void setMail(String mail) {
-        this.mail = mail;
+        String regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        if(mail.matches(regex)) {
+            this.mail = mail;
+        } else {
+            throw new IllegalArgumentException("Adresse e-mail invalide");
+
+        }
     }
 
     public String getMdp() {
@@ -40,14 +46,15 @@ public class Connexion  {
 
     public void verif() throws SQLException {
 
-        PreparedStatement utilisateur = maConnexion.prepareStatement("SELECT * FROM user WHERE mdp = ? and mail = ?;");
-        utilisateur.setString(1, mdp);
-        utilisateur.setString(2, mail);
+        PreparedStatement utilisateur = maConnexion.prepareStatement("SELECT * FROM user WHERE mail = ? AND mdp = MD5(CONCAT(?));");
+        utilisateur.setString(1, mail);
+        utilisateur.setString(2, mdp);
         ResultSet result = utilisateur.executeQuery();
 
         if (result.next()) {
             System.out.println("Vous êtes connecté");
-            HelloApplication.sceneConnexion("logged");
+            HelloApplication.sceneConnexion("hello-view");
+
         }else {
             System.out.println("Mail ou MDP incorrect !");
             HelloApplication.sceneConnexion("loginpage");

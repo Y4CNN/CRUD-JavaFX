@@ -38,7 +38,12 @@ public class Inscription {
     }
 
     public void setMail(String mail) {
-        this.mail = mail;
+        String regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        if(mail.matches(regex)) {
+            this.mail = mail;
+        } else {
+            throw new IllegalArgumentException("Adresse e-mail invalide");
+        }
     }
 
     public String getMdp() {
@@ -51,7 +56,7 @@ public class Inscription {
 
     public void ajout() throws Exception{
 
-        PreparedStatement insert = maConnexion.prepareStatement("INSERT INTO user (nom, prenom, mail, mdp,est_admin) VALUES (?,?,?,?,?);");
+        PreparedStatement insert = maConnexion.prepareStatement("INSERT INTO user (nom, prenom, mail, mdp,est_admin) VALUES (?,?,?,MD5(?),?);");
         insert.setString(1, getNom());
         insert.setString(2, getPrenom());
         insert.setString(3, getMail());
@@ -59,7 +64,8 @@ public class Inscription {
         insert.setInt(5, 1);
         insert.executeUpdate();
 
-        HelloApplication.sceneConnexion("registred");
+        HelloApplication.sceneConnexion("hello-view");
+
     }
 
 

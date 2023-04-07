@@ -12,7 +12,6 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     private static Stage maStage;
 
-    @Override
     public void start(Stage stage) throws IOException {
         maStage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
@@ -22,9 +21,9 @@ public class HelloApplication extends Application {
         maStage.show();
     }
 
-    public static void sceneConnexion(String fxml){
+    public static void sceneConnexion(String fxml) {
         maStage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxml+".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxml + ".fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load());
@@ -39,7 +38,7 @@ public class HelloApplication extends Application {
 
     public static void sceneConnexion(String fxml, Object controlleur) {
         maStage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxml+".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxml + ".fxml"));
         fxmlLoader.setController(controlleur);
         Scene scene = null;
         try {
@@ -52,10 +51,6 @@ public class HelloApplication extends Application {
         }
 
     }
-
-
-
-
 
 
     public static void main(String[] args) {
