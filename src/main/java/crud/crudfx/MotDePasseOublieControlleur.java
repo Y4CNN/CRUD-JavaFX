@@ -25,6 +25,16 @@ public class MotDePasseOublieControlleur {
 
     private int code_send;
 
+    private static String leMail;
+
+    public String getLeMail() {
+        return leMail;
+    }
+
+    public void setLeMail(String leMail) {
+        this.leMail = leMail;
+    }
+
     public void generateCode() {
         Random rand = new Random();
         this.code_send = rand.nextInt(90000) + 10000;
@@ -64,14 +74,20 @@ public class MotDePasseOublieControlleur {
 
     }
 
+
     @FXML
     void verifier(ActionEvent event) {
-        if(code.equals(code_send)){
-            HelloApplication.sceneConnexion("loginpage");
+        setLeMail(mail.getText());
+        String code1 = code.getText();
+        int monCode = Integer.parseInt(code1);
 
+
+        if (monCode == code_send){
+            System.out.println("Code bon ! Vous pouvez changer de mot de passe");
+            System.out.println(getLeMail());
+            HelloApplication.sceneConnexion("change_mdp");
         }else {
-            System.out.printf("Erreur");
-
+            System.out.println("Le code n'est pas bon !");
         }
 
 

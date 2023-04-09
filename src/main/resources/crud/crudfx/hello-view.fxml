@@ -5,22 +5,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="237.0" prefWidth="276.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.crudfx.HelloController">
+<Pane prefHeight="205.0" prefWidth="243.0" style="-fx-background-color: midnight;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.crudfx.HelloController">
     <children>
-        <Label layoutX="103.0" layoutY="14.0" text="CRUD USER">
+        <Label layoutX="79.0" layoutY="5.0" text="USER HOUSE">
             <font>
                 <Font name="Segoe UI Bold Italic" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="signin" layoutX="78.0" layoutY="88.0" mnemonicParsing="false" onAction="#showSignin" prefHeight="25.0" prefWidth="127.0" text="Inscritpion">
+        <Button fx:id="signin" layoutX="58.0" layoutY="120.0" mnemonicParsing="false" onAction="#showSignin" prefHeight="25.0" prefWidth="127.0" text="Inscritpion">
             <font>
                 <Font name="Segoe UI Bold Italic" size="16.0" />
             </font>
         </Button>
-        <Button fx:id="login" layoutX="78.0" layoutY="149.0" mnemonicParsing="false" onAction="#showLogin" prefHeight="25.0" prefWidth="127.0" text="Connexion">
+        <Button fx:id="login" layoutX="58.0" layoutY="74.0" mnemonicParsing="false" onAction="#showLogin" prefHeight="25.0" prefWidth="127.0" text="Connexion">
             <font>
                 <Font name="Segoe UI Bold Italic" size="16.0" />
             </font>
         </Button>
+      <Label fx:id="message" layoutX="51.0" layoutY="30.0" prefHeight="17.0" prefWidth="142.0" />
     </children>
 </Pane>
