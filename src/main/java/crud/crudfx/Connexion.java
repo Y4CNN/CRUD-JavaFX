@@ -53,7 +53,7 @@ public class Connexion  {
 
         if (result.next()) {
             System.out.println("Vous êtes connecté");
-            HelloApplication.sceneConnexion("hello-view");
+            HelloApplication.sceneConnexion("tableau_user");
 
         }else {
             System.out.println("Mail ou MDP incorrect !");
