@@ -47,12 +47,14 @@ public class TableauControlleur {
 
     public ObservableList<User> data = FXCollections.observableArrayList();
 
+    Connection maConnexion = bdd.getConnection();
+
+
     public TableauControlleur() throws Exception {
     }
 
     @FXML
     void afficherUser(ActionEvent event) throws Exception {
-        Connection maConnexion = bdd.getConnection();
 
         PreparedStatement stat = maConnexion.prepareStatement("SELECT * FROM user");
         ResultSet rs = stat.executeQuery();
@@ -69,7 +71,7 @@ public class TableauControlleur {
 
     @FXML
     void ajoutUser(ActionEvent event){
-
+        HelloApplication.sceneConnexion("adduser");
     }
 
     @FXML
@@ -78,8 +80,17 @@ public class TableauControlleur {
     }
 
     @FXML
-    void suppUser(ActionEvent event) {
+    void suppUser(ActionEvent event) throws Exception {
 
+        ObservableList<User> userselected;
+        userselected=tableau.getSelectionModel().getSelectedItems();
+
+        PreparedStatement delete = maConnexion.prepareStatement("DELETE FROM user WHERE id_user LIKE "+ userselected.get(0).getId_user());
+        delete.executeUpdate();
+
+        System.out.println("L'utilisateur "+ userselected.get(0).getId_user() +" a été supprimer !");
+
+        HelloApplication.sceneConnexion("tableau_user");
     }
 
 

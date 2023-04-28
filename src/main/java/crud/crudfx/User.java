@@ -58,8 +58,6 @@ public class User {
     public User() throws Exception {
     }
 
-    Connection maConnexion = bdd.getConnection();
-
     public User(int id_user, String nom, String prenom, String mail, int est_admin) throws Exception {
         this.id_user = id_user;
         this.nom = nom;
