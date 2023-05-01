@@ -1,5 +1,7 @@
 package jakarta;
 
+import javafx.scene.control.Alert;
+
 import java.util.Date;
 
 import javax.mail.Message;
@@ -40,7 +42,10 @@ public class EmailUtil {
             System.out.println("Message is ready");
             Transport.send(msg);
 
-            System.out.println("EMail Sent Successfully!!");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succés");
+            alert.setContentText("Le code de vérification vous a été envoyé !");
+            alert.showAndWait();
         }
         catch (Exception e) {
             e.printStackTrace();

@@ -3,6 +3,7 @@ package crud.crudfx;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -71,8 +72,9 @@ public class MotDePasseOublieControlleur {
         Session session = Session.getInstance(props, auth);
         generateCode();
         jakarta.EmailUtil.sendEmail(session, toEmail,
-                "Code de vérification",
-                "Voici votre code : "+ getCode());
+                "Récupération de votre mot de passe",
+                "Nous avons bien reçu votre demande de récupération de mot de passe. Nous comprenons qu'il est facile d'oublier un mot de passe, et nous sommes là pour vous aider." +
+                        "Voici votre code : "+ getCode());
 
 
     }
@@ -86,11 +88,17 @@ public class MotDePasseOublieControlleur {
 
 
         if (monCode == code_send){
-            System.out.println("Code bon ! Vous pouvez changer de mot de passe");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succés !");
+            alert.setContentText("Code correct vous pouvez changer de mot de passe");
+            alert.showAndWait();
             System.out.println(getLeMail());
             HelloApplication.sceneConnexion("change_mdp");
         }else {
-            System.out.println("Le code n'est pas bon !");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("! ERREUR !");
+            alert.setContentText("LE CODE NE CORRESPOND PAS, VEUILLEZ REESSAYER !");
+            alert.showAndWait();
         }
 
 

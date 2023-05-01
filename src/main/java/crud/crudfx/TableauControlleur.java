@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.Connection;
@@ -78,7 +75,10 @@ public class TableauControlleur {
                 showstatus.setText(String.valueOf(showUser.getInt("est_admin")));
             }
         }else {
-            System.out.println("Veuillez sélectionner un utilisateur à modifier.");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("ERREUR");
+            alert.setContentText("Vous n'avez séléctionné aucun utilisateur !!");
+            alert.showAndWait();
         }
     }
 
@@ -94,7 +94,10 @@ public class TableauControlleur {
             update.setInt(5, userselected.get(0).getId_user());
             update.executeUpdate();
         } else {
-            System.out.println("Veuillez sélectionner un utilisateur à modifier.");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("ERREUR");
+            alert.setContentText("Vous n'avez séléctionné aucun utilisateur !!");
+            alert.showAndWait();
         }
     }
 
@@ -110,9 +113,10 @@ public class TableauControlleur {
         delete.setInt(1, userselected.get(0).getId_user());
         delete.executeUpdate();
 
-        System.out.println("L'utilisateur "+ userselected.get(0).getId_user() +" a été supprimer !");
-
-        HelloApplication.sceneConnexion("tableau_user");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Suppresion !");
+        alert.setContentText("Utilisateur supprimer avec succés !");
+        alert.showAndWait();
     }
 
 
@@ -132,7 +136,6 @@ public class TableauControlleur {
 
 
     public void initialize() throws Exception {
-        System.out.println("Bienvenue sur l'interface administrateur");
         PreparedStatement stat = maConnexion.prepareStatement("SELECT * FROM user");
         ResultSet rs = stat.executeQuery();
         while (rs.next()){
@@ -148,6 +151,11 @@ public class TableauControlleur {
 
     @FXML
     void retour(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Deconnexion !");
+        alert.setContentText("A BIENTOT !");
+        alert.showAndWait();
+
         HelloApplication.sceneConnexion("loginpage");
     }
 

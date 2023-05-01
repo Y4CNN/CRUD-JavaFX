@@ -2,6 +2,7 @@ package crud.crudfx;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -39,11 +40,17 @@ public class ChangeMdpControlleur {
         setMdp2(verifmdp.getText());
 
         if(newmdp.getText().equals(getMdp2())){
-            System.out.println("Mot de passe changé avec succès !");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Succés !");
+            alert.setContentText("Mot de passe modifier avec succés !");
+            alert.showAndWait();
             changeMDP.UpdateDuMdp();
             HelloApplication.sceneConnexion("loginpage");
         } else {
-            System.out.println("Erreur : les mots de passe ne correspondent pas !");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("! ERREUR !");
+            alert.setContentText("LES MOTS DE PASSE NE CORRESPONDENT PAS !");
+            alert.showAndWait();
         }
     }
 

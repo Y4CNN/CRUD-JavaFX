@@ -1,6 +1,7 @@
 package crud.crudfx;
 import bdd.bdd;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
@@ -31,7 +32,10 @@ public class Connexion  {
         if(mail.matches(regex)) {
             this.mail = mail;
         } else {
-            throw new IllegalArgumentException("Adresse e-mail invalide");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERREUR !");
+            alert.setContentText("ADRESSE MAIL NON COMFORME !");
+            alert.showAndWait();
 
         }
     }
@@ -52,11 +56,17 @@ public class Connexion  {
         ResultSet result = utilisateur.executeQuery();
 
         if (result.next()) {
-            System.out.println("Vous êtes connecté");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succés !");
+            alert.setContentText("Connexion réussie !");
+            alert.showAndWait();
             HelloApplication.sceneConnexion("tableau_user");
 
         }else {
-            System.out.println("Mail ou MDP incorrect !");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERREUR");
+            alert.setContentText("MAIL OU MOT DE PASSE INCORRET !!");
+            alert.showAndWait();
             HelloApplication.sceneConnexion("loginpage");
         }
     }

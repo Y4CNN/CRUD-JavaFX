@@ -1,6 +1,7 @@
 package crud.crudfx;
 
 import bdd.bdd;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,7 +43,10 @@ public class Inscription {
         if(mail.matches(regex)) {
             this.mail = mail;
         } else {
-            throw new IllegalArgumentException("Adresse e-mail invalide");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERREUR !");
+            alert.setContentText("ADRESSE MAIL NON COMFORME !");
+            alert.showAndWait();
         }
     }
 
