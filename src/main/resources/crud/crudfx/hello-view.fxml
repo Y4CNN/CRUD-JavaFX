@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="205.0" prefWidth="243.0" style="-fx-background-color: midnight;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.crudfx.HelloController">
+<Pane prefHeight="230.0" prefWidth="400.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.crudfx.HelloController">
     <children>
-        <Label layoutX="79.0" layoutY="5.0" text="USER HOUSE">
+        <Label layoutX="27.0" layoutY="22.0" text="GESTION DES UTILISATEUR" textFill="WHITE">
             <font>
-                <Font name="Segoe UI Bold Italic" size="14.0" />
+                <Font name="Segoe UI Bold Italic" size="27.0" />
             </font>
         </Label>
-        <Button fx:id="signin" layoutX="58.0" layoutY="120.0" mnemonicParsing="false" onAction="#showSignin" prefHeight="25.0" prefWidth="127.0" text="Inscritpion">
+        <Button fx:id="signin" layoutX="229.0" layoutY="177.0" mnemonicParsing="false" onAction="#showSignin" prefHeight="25.0" prefWidth="127.0" text="Inscritpion">
             <font>
                 <Font name="Segoe UI Bold Italic" size="16.0" />
             </font>
         </Button>
-        <Button fx:id="login" layoutX="58.0" layoutY="74.0" mnemonicParsing="false" onAction="#showLogin" prefHeight="25.0" prefWidth="127.0" text="Connexion">
+        <Button fx:id="login" layoutX="59.0" layoutY="177.0" mnemonicParsing="false" onAction="#showLogin" prefHeight="25.0" prefWidth="127.0" text="Connexion">
             <font>
                 <Font name="Segoe UI Bold Italic" size="16.0" />
             </font>
         </Button>
-      <Label fx:id="message" layoutX="51.0" layoutY="30.0" prefHeight="17.0" prefWidth="142.0" />
+      <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="162.0" layoutY="150.0" selectionFill="BLACK" size="100" wrappingWidth="76.0" />
     </children>
 </Pane>

@@ -15,6 +15,9 @@ import java.util.Random;
 public class MotDePasseOublieControlleur {
 
     @FXML
+    private Button retour;
+
+    @FXML
     private Button envoyer;
 
     @FXML
@@ -91,5 +94,10 @@ public class MotDePasseOublieControlleur {
         }
 
 
+    }
+
+    @FXML
+    void retour(ActionEvent event){
+        HelloApplication.sceneConnexion("loginpage");
     }
 }
